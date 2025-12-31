@@ -1,73 +1,68 @@
-# React + TypeScript + Vite
+# MLB Qualifying Offer Calculator for The Philadelphia Phillies
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A Phillies-themed React application that calculates the MLB qualifying offer based on the top 125 player salaries.  
 
-Currently, two official plugins are available:
+It fetches salary data from a salary API endpoint, calculates the top 125 average, and displays it in a clean, Philadelphia Phillies-themed interface.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Fetches salary data from `https://questionnaire-148920.appspot.com/swe/data.html`
+- Calculates the top 125 salaries average (the qualifying offer)
+- Displays in a Phillies-themed UI with red, navy, and white styling
+- Clean, easy to read, but basic and with room for improvements.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Getting Started
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Please follow these instructions to get a copy of the project running locally for testing.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Prerequisites
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- Node.js (v18 or newer)
+- npm (comes with Node.js)
+- Git
+
+---
+
+### Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/<JamesCloverM>/<Phillies-oa>.git
+
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+  2. Change your directory to the newly cloned repository.
+  ```bash
+    cd <Phillies-oa>
 ```
+3. Install dependencies
+  ```bash
+  npm install
+  ```
+
+### Running the App Locally
+
+```bash
+npm run dev
+```
+This will run the vite dev server, and provide a URL, likely local host (e.g., http://localhost:5173/)
+
+### Project Structure
+```bash 
+/src
+  /api
+    salaryAPI.ts                # Modular API to provide salary data
+  /utils
+    fetchSalaries.ts            # Fetches salary data from API
+    calculateQualifyingOffer.ts # Calculates the top 125 average salaries
+  App.tsx                       # The main App component
+  App.css                        # Basic Phillies-themed component styles
+  index.tsx                      # The App entry point
+  index.css                       # The Global styles
+  ```
+
