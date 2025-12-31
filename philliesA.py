@@ -1,6 +1,8 @@
-# Part A -  Python is_palindrome Checker
-# Original Code Provided:
-```python
+## The following Python function checks whether a string is a palindrome.
+## Please explain, in 250 words or less, how you'd improve this code and why. 
+## We’re not looking for a simple one-line rewrite here - 
+## Submissions will be graded based on the clarity by which you describe what the improvements are, and also WHY they should be made. 
+
 def is_palindrone(s):
     r=""
     for c in s:
@@ -11,15 +13,14 @@ def is_palindrone(s):
         else:
             return False
     return x
-```
-## How to Improve and Why
+
+"""
 The initial code starts by creating a variable that holds the value of reversing the input string, and then comparing each character of the original and reversed strings. With the way the code is written, there is much room for improved clarity, and overall efficiency. One of the clarity issues with the initial code has to do with the readability of the variable names. The code uses variables such as r and x which do not have thoughtful meaning behind them, and x is even used twice; as we iterate through the loop, and again as the final return value. To clean this up, and if we wanted to stick with this approach, we could create a separate flagging variable, such as is_palindrome, assign it the correct value during the algorithm, and eventually return that more readable variable. This code also may not work correctly in all scenarios depending on the input string. It does not handle cases where the characters are the same, but are a different case, and also doesn't account for non-alphanumeric characters. To account for this, we could use methods to compare the lower-case version of the characters of the strings at each iteration, and skip over non-alphanumeric characters. Outside of clarity issues, the code could be more efficient. It uses unnecessary space in memory by creating the "r" variable, where r would end up being the length of the input string.
 
 I would propose that instead of creating a new reversed string, and returning a variable such as x as our final result, we instead iterate through the string, breaking out early if we determine that a palindrome does not exist. If we get through the entire string, and we do not break out early, we know that we can eventually just return true at the end of our method. This would save space in memory, and it would eliminate the needed (potentially long) O(N) space that is determined by the input string. I would propose the re-written method below. This method uses a while loop and two pointer variables to skip over non-alphanumeric characters, and then compares the lower case version of the two characters in question. If a mismatch is present, we return false. Otherwise, we continue iterating through the string. At the end, we can just return True as it means we've checked all of the characters in question.
+"""
 
-## Proposed Code
-```python
-def is_palindrome(s) :
+def is_palindrome(s: str) -> bool:
     left, right = 0, len(s) - 1
 
     while left < right:
@@ -37,74 +38,3 @@ def is_palindrome(s) :
         right -= 1
     # if all is well, we can just return true
     return True
-
-```
-
-# Part B -  MLB Qualifying Offer Calculator for The Philadelphia Phillies
-
-A Phillies-themed React application that calculates the MLB qualifying offer based on the top 125 player salaries.  
-
-It fetches salary data from a salary API endpoint, calculates the top 125 average, and displays it in a clean, Philadelphia Phillies-themed interface.
-
----
-
-## Features
-
-- Fetches salary data from `https://questionnaire-148920.appspot.com/swe/data.html`
-- Calculates the top 125 salaries average (the qualifying offer)
-- Displays in a Phillies-themed UI with red, navy, and white styling
-- Clean, easy to read, but basic and with room for improvements.
-
----
-
-## Getting Started
-
-Please follow these instructions to get a copy of the project running locally for testing.
-
-### Prerequisites
-
-- Node.js (v18 or newer)
-- npm (comes with Node.js)
-- Git
-
----
-
-### Installation
-
-1. Clone the repository:
-
-```bash
-git clone https://github.com/JamesCloverM/Phillies-oa.git
-
-```
-
-  2. Change your directory to the newly cloned repository.
-  ```bash
-    cd Phillies-oa
-```
-3. Install dependencies
-  ```bash
-  npm install
-  ```
-
-### Running the App Locally
-
-```bash
-npm run dev
-```
-This will run the vite dev server, and provide a URL, likely local host (e.g., http://localhost:5173/)
-
-### Project Structure
-```bash 
-/src
-  /api
-    salaryAPI.ts                # Modular API to provide salary data
-  /utils
-    fetchSalaries.ts            # Fetches salary data from API
-    calculateQualifyingOffer.ts # Calculates the top 125 average salaries
-  App.tsx                       # The main App component
-  App.css                        # Basic Phillies-themed component styles
-  index.tsx                      # The App entry point
-  index.css                       # The Global styles
-  ```
-
