@@ -32,13 +32,13 @@ Please follow these instructions to get a copy of the project running locally fo
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/<JamesCloverM>/<Phillies-oa>.git
+git clone https://github.com/JamesCloverM/Phillies-oa.git
 
 ```
 
   2. Change your directory to the newly cloned repository.
   ```bash
-    cd <Phillies-oa>
+    cd Phillies-oa
 ```
 3. Install dependencies
   ```bash
